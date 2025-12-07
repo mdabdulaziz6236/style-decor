@@ -1,14 +1,64 @@
 import React, { useState } from "react";
 import { FaGoogle, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import loginImg from "../../assets/login.png";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
-  const { googleLogin } = useAuth();
-  const navigate= useNavigate()
+  const { googleLogin, signInUser, registerUser } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const handleRegister = (data) => {
+    console.log(data);
+    registerUser(data.email, data.password).then((res)=>{
+      if (res) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `Register Successfully ${data.name} `,
+            showConfirmButton: false,
+            timer: 1000,
+          });
+          navigate(location?.state || "/");
+        }
+    })
+  };
+  const handleSignIn = (data) => {
+    signInUser(data.email, data.password)
+      .then((res) => {
+        console.log(res);
+        if (res) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `SignIn Successfully ${data.name} `,
+            showConfirmButton: false,
+            timer: 1000,
+          });
+          navigate(location?.state || "/");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const onSubmit = (data) => {
+    if (isLogin) {
+      handleSignIn(data);
+    } else {
+      handleRegister(data);
+    }
+  };
+  /* google login  */
   const handleGoogleLogin = () => {
     googleLogin()
       .then((result) => {
@@ -19,7 +69,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1000,
         });
-        navigate('/')
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.message);
@@ -92,7 +142,7 @@ const Login = () => {
           </div>
 
           {/* Form */}
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             {/* Registration Fields (Only show when Register is active) */}
             {!isLogin && (
               <>
@@ -104,11 +154,15 @@ const Login = () => {
                     </span>
                   </label>
                   <input
+                    {...register("name", { required: true })}
                     type="text"
                     name="name"
                     placeholder="Enter your full name"
                     className="input input-bordered w-full bg-base-100 focus:border-primary focus:outline-none rounded-xl"
                   />
+                  {errors.name?.type === "required" && (
+                    <p className="text-red-500">Name is required.</p>
+                  )}
                 </div>
 
                 {/* Image Upload Input */}
@@ -119,10 +173,13 @@ const Login = () => {
                     </span>
                   </label>
                   <input
+                    {...register("photo", { required: true })}
                     type="file"
-                    name="image"
                     className="file-input file-input-bordered w-full bg-base-100 rounded-xl focus:border-primary"
                   />
+                  {errors.name?.type === "required" && (
+                    <p className="text-red-500">Photo is required.</p>
+                  )}
                 </div>
               </>
             )}
@@ -135,11 +192,23 @@ const Login = () => {
                 </span>
               </label>
               <input
+                {...register("email", {
+                  required: true,
+                  pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                })}
                 type="email"
                 name="email"
                 placeholder="Enter your email address"
                 className="input input-bordered w-full bg-base-100 focus:border-primary focus:outline-none rounded-xl"
               />
+              {errors.email?.type === "required" && (
+                <p className="text-red-500">Email is required.</p>
+              )}
+              {errors.email?.type === "pattern" && (
+                <p className="text-red-500">
+                  Please enter a valid email address.
+                </p>
+              )}
             </div>
 
             {/* Password Input */}
@@ -151,11 +220,29 @@ const Login = () => {
               </label>
               <div className="relative">
                 <input
+                  {...register("password", {
+                    required: true,
+                    minLength: 6,
+                    pattern:
+                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).+$/,
+                  })}
                   type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="Enter your password"
                   className="input input-bordered w-full bg-base-100 focus:border-primary focus:outline-none rounded-xl pr-10"
                 />
+                {errors.password?.type === "required" && (
+                  <p className="text-red-500">Password is required.</p>
+                )}
+                {errors.password?.type === "minLength" && (
+                  <p className="text-red-500">Password must 6 character.</p>
+                )}
+                {errors.password?.type === "pattern" && (
+                  <p className="text-red-500">
+                    Password must include uppercase and Lowercase at least one
+                    special character (e.g., !@#$%^&*)
+                  </p>
+                )}
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
@@ -178,7 +265,10 @@ const Login = () => {
             </div>
 
             {/* Submit Button */}
-            <button className="btn btn-primary w-full rounded-xl text-black text-lg mt-2 font-bold">
+            <button
+              state={location.state}
+              className="btn btn-primary w-full rounded-xl text-black text-lg mt-2 font-bold"
+            >
               {isLogin ? "Login" : "Register"}
             </button>
           </form>
