@@ -17,6 +17,9 @@ const Navbar = () => {
       <li>
         <MyLink to='/contact'>Contact</MyLink>
       </li>
+      <li>
+        <MyLink to='/dashboard'>Dashboard</MyLink>
+      </li>
     </>
   );
   return (
