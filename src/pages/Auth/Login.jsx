@@ -1,14 +1,33 @@
 import React, { useState } from "react";
 import { FaGoogle, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import loginImg from "../../assets/login.png";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
-
+  const { googleLogin } = useAuth();
+  const navigate= useNavigate()
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `Login Successfully ${result.user.displayName} `,
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        navigate('/')
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   return (
-    <div className="min-h-screen flex items-center justify-center bg-base-100 p-5 font-display">
-      <div className="w-full max-w-5xl bg-base-200 rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row">
+    <div className="min-h-screen  flex items-center justify-center bg-base-100 p-5 font-display">
+      <div className="w-full lg:w-full md:w-[70%] mx-auto max-w-5xl bg-base-200 rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row">
         {/* Left Side - Image Section */}
         <div
           className="hidden lg:flex w-1/2 relative bg-cover bg-center items-end"
@@ -25,7 +44,7 @@ const Login = () => {
         </div>
 
         {/* Right Side - Form Section */}
-        <div className="w-full lg:w-1/2 p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
+        <div className=" lg:w-1/2 p-8  sm:p-12 lg:p-16 flex flex-col justify-center">
           {/* Header */}
           <div className="mb-8">
             <div className="text-3xl flex gap-5 font-bold text-base-content mb-2">
@@ -170,7 +189,10 @@ const Login = () => {
           </div>
 
           {/* Google Button */}
-          <button className="btn btn-outline border-base-300 hover:bg-base-300 hover:border-base-300 text-base-content rounded-xl flex items-center justify-center gap-2 h-12 w-full">
+          <button
+            onClick={handleGoogleLogin}
+            className="btn btn-outline border-base-300 hover:bg-base-300 hover:border-base-300 text-base-content rounded-xl flex items-center justify-center gap-2 h-12 w-full"
+          >
             <FaGoogle className="text-lg" />
             <span className="text-sm font-semibold">Google</span>
           </button>
