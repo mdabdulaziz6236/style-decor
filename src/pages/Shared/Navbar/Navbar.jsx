@@ -1,24 +1,24 @@
 import React from "react";
 import MyLink from "../../../Components/MyLinks/MyLink";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
   const links = (
     <>
       <li>
-        <MyLink to='/'>Home</MyLink>
+        <MyLink to="/">Home</MyLink>
       </li>
       <li>
-        <MyLink to='/services'>Services</MyLink>
+        <MyLink to="/services">Services</MyLink>
       </li>
       <li>
-        <MyLink to='/about'>About</MyLink>
+        <MyLink to="/about">About</MyLink>
       </li>
       <li>
-        <MyLink to='/contact'>Contact</MyLink>
+        <MyLink to="/contact">Contact</MyLink>
       </li>
       <li>
-        <MyLink to='/dashboard'>Dashboard</MyLink>
+        <MyLink to="/dashboard">Dashboard</MyLink>
       </li>
     </>
   );
@@ -50,13 +50,17 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Style Decor</a>
+        <NavLink to="/" className="hover:underline text-xl">
+          Style Decor
+        </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <Link to='/auth/login' className="btn">Login</Link>
+        <Link to="/auth/login" className="btn btn-primary text-black font-bold">
+          Login
+        </Link>
       </div>
     </div>
   );
