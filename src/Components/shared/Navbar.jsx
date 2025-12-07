@@ -1,8 +1,13 @@
 import React from "react";
-import MyLink from "../../../Components/MyLinks/MyLink";
+
 import { Link, NavLink } from "react-router";
+import MyLink from "../MyLinks/MyLink";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+  console.log(user);
   const links = (
     <>
       <li>
@@ -22,6 +27,17 @@ const Navbar = () => {
       </li>
     </>
   );
+  const handleLogout = () => {
+    logOut().then(() => {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: `Logout Successfully`,
+        showConfirmButton: false,
+        timer: 1000,
+      });
+    });
+  };
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -58,9 +74,40 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/auth/login" className="btn btn-primary text-black font-bold">
-          Login
-        </Link>
+        {user && user?.email ? (
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-12 h-12 rounded-full">
+                <img src={user.photoURL} alt={`${user.displayName}`} />
+              </div>
+            </div>
+
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            >
+              <li>
+                <Link to="/dashboard" className="justify-between">
+                  Dashboard
+                </Link>
+              </li>
+              <li>
+                <button onClick={handleLogout}>Logout</button>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <Link
+            to="/auth/login"
+            className="btn btn-primary text-white font-bold"
+          >
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

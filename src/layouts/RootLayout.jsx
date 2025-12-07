@@ -1,5 +1,6 @@
 import { Outlet } from "react-router";
-import Navbar from "../pages/Shared/Navbar/Navbar";
+import Navbar from "../Components/shared/Navbar";
+
 
 const RootLayout = () => {
   return (
