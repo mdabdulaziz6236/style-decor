@@ -79,9 +79,9 @@ const Navbar = () => {
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost btn-circle avatar"
+              className=" avatar"
             >
-              <div className="w-12 h-12 rounded-full">
+              <div className="w-15 h-15 rounded-full">
                 <img src={user.photoURL} alt={`${user.displayName}`} />
               </div>
             </div>
