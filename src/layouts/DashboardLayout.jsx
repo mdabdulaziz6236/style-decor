@@ -3,9 +3,13 @@ import { FaHouseUser, FaRegUserCircle, FaUserPlus } from "react-icons/fa";
 import { Link, Outlet } from "react-router";
 import useRole from "../hooks/useRole";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
+import Loading from "../Components/Loading/Loading";
 
 const DashboardLayout = () => {
-  const { role } = useRole();
+  const { role, roleLoading } = useRole();
+  if (roleLoading) {
+    return <Loading></Loading>;
+  }
   return (
     <div className="drawer max-w-7xl mx-auto lg:drawer-open">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -93,22 +97,26 @@ const DashboardLayout = () => {
                 <span className="is-drawer-close:hidden">Profile</span>
               </Link>
             </li>
-            <li
-              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-              data-tip="Become Decorator"
-            >
-              <Link to="/dashboard/decorator">
-                <FaUserPlus className="my-1.5 inline-block size-4" />
-                <span className="is-drawer-close:hidden">Become Decorator</span>
-              </Link>
-            </li>
+            {role !== "admin" && role !== "decorator" && (
+              <li
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Become Decorator"
+              >
+                <Link to="/dashboard/decorator">
+                  <FaUserPlus className="my-1.5 inline-block size-4" />
+                  <span className="is-drawer-close:hidden">
+                    Become Decorator
+                  </span>
+                </Link>
+              </li>
+            )}
             {role === "admin" && (
               <li
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                 data-tip="Approve Decorator"
               >
                 <Link to="/dashboard/approve-decorator">
-                <RiVerifiedBadgeFill className="my-1.5 inline-block size-4"  />
+                  <RiVerifiedBadgeFill className="my-1.5 inline-block size-4" />
                   <span className="is-drawer-close:hidden">
                     Approve Decorator
                   </span>
