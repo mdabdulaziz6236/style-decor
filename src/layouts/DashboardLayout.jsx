@@ -1,5 +1,5 @@
 import React from "react";
-import { FaRegUserCircle } from "react-icons/fa";
+import { FaHouseUser, FaRegUserCircle } from "react-icons/fa";
 import { Link, Outlet } from "react-router";
 
 const DashboardLayout = () => {
@@ -49,9 +49,10 @@ const DashboardLayout = () => {
             <li>
               <Link
                 to="/"
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Homepage"
+                className="is-drawer-close:tooltip flex items-center is-drawer-close:tooltip-right"
+                data-tip="Home"
               >
+              <FaHouseUser className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden text-2xl font-black  text-primary tracking-tight">
                   Style Decor
                 </span>
