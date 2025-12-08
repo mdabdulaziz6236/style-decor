@@ -6,7 +6,6 @@ import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Auth/Login";
-import Register from "../pages/Auth/register";
 import DashboardLayout from "../layouts/DashboardLayout";
 import DashboardHome from "../pages/Dashboard/DashboardHome";
 import Profile from "../pages/Dashboard/Profile";
@@ -41,10 +40,6 @@ export const router = createBrowserRouter([
       {
         path: "login",
         Component: Login,
-      },
-      {
-        path: "register",
-        Component: Register,
       },
     ],
   },

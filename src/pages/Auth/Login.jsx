@@ -6,12 +6,14 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const { googleLogin, signInUser, registerUser, updateUserProfile } =
     useAuth();
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const location = useLocation();
   const {
@@ -41,19 +43,26 @@ const Login = () => {
           displayName: data.name,
           photoURL: photoURL,
         };
-
-        // 3. Update Profile
+        // 3. Update Profile in firebase
         await updateUserProfile(updateProfile);
+        /* save user info in mongodb */
+        const userInfo = {
+          email: data.email,
+          displayName: data.name,
+          photoURL: photoURL,
+        };
+        const dbRes = await axiosSecure.post("/users", userInfo);
+        if (dbRes.data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `Welcome  ${data.name}!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
 
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: `Welcome ${data.name}!`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
-
-        navigate(location?.state || "/");
+          navigate(location?.state || "/");
+        }
       }
     } catch (error) {
       Swal.fire({
@@ -71,7 +80,7 @@ const Login = () => {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: "Login Successful",
+          title: `Welcome  ${data.name}!`,
           showConfirmButton: false,
           timer: 1500,
         });
@@ -93,7 +102,15 @@ const Login = () => {
   /* GOOGLE LOGIN */
   const handleGoogleLogin = () => {
     googleLogin()
-      .then((result) => {
+      .then(async (result) => {
+        /* user info save in database */
+        const user = result.user;
+        const userInfo = {
+          email: user.email,
+          name: user.displayName,
+          photoURL: user.photoURL,
+        };
+        await axiosSecure.post("/users", userInfo);
         Swal.fire({
           position: "top-end",
           icon: "success",
