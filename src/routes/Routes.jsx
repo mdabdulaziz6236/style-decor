@@ -7,8 +7,8 @@ import Contact from "../pages/Contact/Contact";
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Auth/Login";
 import DashboardLayout from "../layouts/DashboardLayout";
-import DashboardHome from "../pages/Dashboard/DashboardHome";
 import Profile from "../pages/Dashboard/Profile";
+import DashboardHome from "../pages/Dashboard/dashboardHome/dashboardHome";
 
 export const router = createBrowserRouter([
   {
