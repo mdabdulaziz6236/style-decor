@@ -20,12 +20,11 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-/* REGISTER HANDLER */
+  /* REGISTER HANDLER */
   const handleRegister = async (data) => {
     try {
       // 1. Create User
-      const result = registerUser(data.email, data.password);
-      console.log(result);
+      await registerUser(data.email, data.password);
 
       // 2. Prepare Image Upload
       const formData = new FormData();
@@ -65,7 +64,7 @@ const Login = () => {
     }
   };
 
-/* LOGIN HANDLER */
+  /* LOGIN HANDLER */
   const handleSignIn = (data) => {
     signInUser(data.email, data.password)
       .then(() => {
@@ -91,7 +90,6 @@ const Login = () => {
     isLogin ? handleSignIn(data) : handleRegister(data);
   };
 
-
   /* GOOGLE LOGIN */
   const handleGoogleLogin = () => {
     googleLogin()
@@ -116,7 +114,7 @@ const Login = () => {
           className="hidden lg:flex w-1/2 bg-cover bg-center relative"
           style={{ backgroundImage: `url(${loginImg})` }}
         >
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+          <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent"></div>
           <div className="relative z-10 p-10 mb-8">
             <h2 className="text-primary text-4xl font-black leading-tight">
               Your Smart Home, <br /> Your Perfect <br /> Celebration.
