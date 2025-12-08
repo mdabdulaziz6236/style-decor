@@ -9,6 +9,7 @@ import Login from "../pages/Auth/Login";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Profile from "../pages/Dashboard/Profile";
 import DashboardHome from "../pages/Dashboard/dashboardHome/dashboardHome";
+import Coverage from "../pages/Service-coverase/Coverage";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +23,11 @@ export const router = createBrowserRouter([
       {
         path: "services",
         Component: Services,
+      },
+      {
+        path: "coverage",
+        loader: () => fetch("/coverage-area.json").then((res) => res.json()),
+        Component: Coverage,
       },
       {
         path: "about",
@@ -50,10 +56,11 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: DashboardHome,
-      },{
-        path:'profile',
-        Component:Profile
-      }
+      },
+      {
+        path: "profile",
+        Component: Profile,
+      },
     ],
   },
 ]);
