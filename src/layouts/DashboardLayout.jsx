@@ -1,5 +1,5 @@
 import React from "react";
-import { FaHouseUser, FaRegUserCircle } from "react-icons/fa";
+import { FaHouseUser, FaRegUserCircle, FaUserPlus } from "react-icons/fa";
 import { Link, Outlet } from "react-router";
 
 const DashboardLayout = () => {
@@ -88,6 +88,15 @@ const DashboardLayout = () => {
               <Link to="/dashboard/profile">
                 <FaRegUserCircle className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">Profile</span>
+              </Link>
+            </li>
+            <li
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              data-tip="Become Decorator"
+            >
+              <Link to="/dashboard/decorator">
+                <FaUserPlus  className="my-1.5 inline-block size-4" />
+                <span className="is-drawer-close:hidden">Become Decorator</span>
               </Link>
             </li>
           </ul>
