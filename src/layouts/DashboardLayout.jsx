@@ -1,8 +1,11 @@
 import React from "react";
 import { FaHouseUser, FaRegUserCircle, FaUserPlus } from "react-icons/fa";
 import { Link, Outlet } from "react-router";
+import useRole from "../hooks/useRole";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
 
 const DashboardLayout = () => {
+  const { role } = useRole();
   return (
     <div className="drawer max-w-7xl mx-auto lg:drawer-open">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -52,7 +55,7 @@ const DashboardLayout = () => {
                 className="is-drawer-close:tooltip flex items-center is-drawer-close:tooltip-right"
                 data-tip="Home"
               >
-              <FaHouseUser className="my-1.5 inline-block size-4" />
+                <FaHouseUser className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden text-2xl font-black  text-primary tracking-tight">
                   Style Decor
                 </span>
@@ -95,10 +98,23 @@ const DashboardLayout = () => {
               data-tip="Become Decorator"
             >
               <Link to="/dashboard/decorator">
-                <FaUserPlus  className="my-1.5 inline-block size-4" />
+                <FaUserPlus className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">Become Decorator</span>
               </Link>
             </li>
+            {role === "admin" && (
+              <li
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Approve Decorator"
+              >
+                <Link to="/dashboard/approve-decorator">
+                <RiVerifiedBadgeFill className="my-1.5 inline-block size-4"  />
+                  <span className="is-drawer-close:hidden">
+                    Approve Decorator
+                  </span>
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

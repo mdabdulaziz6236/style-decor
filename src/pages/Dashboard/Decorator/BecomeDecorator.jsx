@@ -15,7 +15,7 @@ const BecomeDecorator = () => {
     control,
     formState: { errors },
   } = useForm();
-const {user} = useAuth()
+  const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
 
@@ -32,7 +32,9 @@ const {user} = useAuth()
   };
 
   const handleDecoratorApplication = (data) => {
-    axiosSecure.post("/decorators", data).then((res) => {
+    const decoratorInfo = data;
+    decoratorInfo.photoURL = user.photoURL;
+    axiosSecure.post("/decorators", decoratorInfo).then((res) => {
       if (res.data.insertedId) {
         navigate("/dashboard");
         Swal.fire({
@@ -108,7 +110,7 @@ const {user} = useAuth()
                   </label>
                   <input
                     type="email"
-                     defaultValue={user?.email}
+                    defaultValue={user?.email}
                     {...register("email", { required: "Email is required" })}
                     className={`input input-bordered w-full focus:input-primary bg-base-50 ${
                       errors.email ? "input-error" : ""

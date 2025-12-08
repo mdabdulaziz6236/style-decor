@@ -11,6 +11,7 @@ import Profile from "../pages/Dashboard/Profile";
 import DashboardHome from "../pages/Dashboard/dashboardHome/dashboardHome";
 import Coverage from "../pages/Service-coverase/Coverage";
 import BecomeDecorator from "../pages/Dashboard/Decorator/BecomeDecorator";
+import ApproveDecorators from "../pages/Dashboard/dashboardHome/Admin/ApproveDecorators";
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
       {
         path: "profile",
         Component: Profile,
+      },
+      {
+        path: "approve-decorator",
+        Component: ApproveDecorators,
       },
       {
         path: "decorator",
