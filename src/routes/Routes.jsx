@@ -13,11 +13,13 @@ import Coverage from "../pages/Service-coverase/Coverage";
 import BecomeDecorator from "../pages/Dashboard/Decorator/BecomeDecorator";
 import ApproveDecorators from "../pages/Dashboard/dashboardHome/Admin/ApproveDecorators";
 import PrivetRoute from "./PrivetRoute";
+import ErrorPage from "../pages/eroor/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout></RootLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
