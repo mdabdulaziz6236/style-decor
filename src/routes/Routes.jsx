@@ -14,6 +14,7 @@ import BecomeDecorator from "../pages/Dashboard/Decorator/BecomeDecorator";
 import ApproveDecorators from "../pages/Dashboard/dashboardHome/Admin/ApproveDecorators";
 import PrivetRoute from "./PrivetRoute";
 import ErrorPage from "../pages/eroor/ErrorPage";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -72,7 +73,9 @@ export const router = createBrowserRouter([
       },
       {
         path: "approve-decorator",
-        Component: ApproveDecorators,
+        element: <AdminRoute>
+          <ApproveDecorators></ApproveDecorators>
+        </AdminRoute>
       },
       {
         path: "decorator",
