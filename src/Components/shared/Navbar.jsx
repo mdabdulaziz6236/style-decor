@@ -25,9 +25,11 @@ const Navbar = () => {
       <li>
         <MyLink to="/contact">Contact</MyLink>
       </li>
-      <li>
-        <MyLink to="/dashboard">Dashboard</MyLink>
-      </li>
+      {user && (
+        <li>
+          <MyLink to="/dashboard">Dashboard</MyLink>
+        </li>
+      )}
     </>
   );
   const handleLogout = () => {
@@ -79,11 +81,7 @@ const Navbar = () => {
       <div className="navbar-end">
         {user && user?.email ? (
           <div className="dropdown dropdown-end">
-            <div
-              tabIndex={0}
-              role="button"
-              className=" avatar"
-            >
+            <div tabIndex={0} role="button" className=" avatar">
               <div className="w-15 h-15 rounded-full">
                 <img src={user.photoURL} alt={`${user.displayName}`} />
               </div>

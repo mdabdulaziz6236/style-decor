@@ -12,6 +12,7 @@ import DashboardHome from "../pages/Dashboard/dashboardHome/dashboardHome";
 import Coverage from "../pages/Service-coverase/Coverage";
 import BecomeDecorator from "../pages/Dashboard/Decorator/BecomeDecorator";
 import ApproveDecorators from "../pages/Dashboard/dashboardHome/Admin/ApproveDecorators";
+import PrivetRoute from "./PrivetRoute";
 
 export const router = createBrowserRouter([
   {
@@ -29,7 +30,7 @@ export const router = createBrowserRouter([
       {
         path: "coverage",
         loader: () => fetch("/coverage-area.json").then((res) => res.json()),
-        Component: Coverage,
+        element: <Coverage></Coverage>,
       },
       {
         path: "about",
@@ -53,7 +54,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: (
+      <PrivetRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivetRoute>
+    ),
     children: [
       {
         index: true,

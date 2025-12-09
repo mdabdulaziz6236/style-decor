@@ -118,7 +118,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1000,
         });
-        navigate("/");
+        navigate(location?.state || "/");
       })
       .catch((error) => console.log(error.message));
   };
@@ -167,16 +167,16 @@ const Login = () => {
           <div className="bg-base-300 p-1 rounded-xl flex mb-6">
             <button
               onClick={() => setIsLogin(true)}
-              className={`flex-1 py-2 rounded-lg text-sm font-semibold ${
-                isLogin ? "bg-base-100 shadow" : "text-neutral/60"
+              className={`flex-1 py-2 rounded-lg text-sm text-primary font-semibold ${
+                isLogin ? "bg-base-100 shadow" : "text-white"
               }`}
             >
               Login
             </button>
             <button
               onClick={() => setIsLogin(false)}
-              className={`flex-1 py-2 rounded-lg text-sm font-semibold ${
-                !isLogin ? "bg-base-100 shadow" : "text-neutral/60"
+              className={`flex-1 py-2 rounded-lg text-sm text-primary font-semibold ${
+                !isLogin ? "bg-base-100 shadow" : "text-white"
               }`}
             >
               Register
