@@ -123,6 +123,19 @@ const DashboardLayout = () => {
                 </Link>
               </li>
             )}
+            {role === "admin" && (
+              <li
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Add Service"
+              >
+                <Link to="/dashboard/add-service">
+                  <RiVerifiedBadgeFill className="my-1.5 inline-block size-4" />
+                  <span className="is-drawer-close:hidden">
+                    Add Service
+                  </span>
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

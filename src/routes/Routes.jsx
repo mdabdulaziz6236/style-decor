@@ -15,6 +15,7 @@ import ApproveDecorators from "../pages/Dashboard/dashboardHome/Admin/ApproveDec
 import PrivetRoute from "./PrivetRoute";
 import ErrorPage from "../pages/eroor/ErrorPage";
 import AdminRoute from "./AdminRoute";
+import AddService from "../pages/Dashboard/dashboardHome/Admin/AddService";
 
 export const router = createBrowserRouter([
   {
@@ -75,6 +76,12 @@ export const router = createBrowserRouter([
         path: "approve-decorator",
         element: <AdminRoute>
           <ApproveDecorators></ApproveDecorators>
+        </AdminRoute>
+      },
+      {
+        path: "add-service",
+        element: <AdminRoute>
+          <AddService></AddService>
         </AdminRoute>
       },
       {
