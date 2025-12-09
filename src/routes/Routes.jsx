@@ -16,6 +16,7 @@ import PrivetRoute from "./PrivetRoute";
 import ErrorPage from "../pages/eroor/ErrorPage";
 import AdminRoute from "./AdminRoute";
 import AddService from "../pages/Dashboard/dashboardHome/Admin/AddService";
+import ServiceDetails from "../pages/ServiceDetails/ServiceDetails";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,11 @@ export const router = createBrowserRouter([
       {
         path: "services",
         Component: Services,
+      },
+      {
+        path: "services/:id",
+         loader: () => fetch("/coverage-area.json").then((res) => res.json()),
+        Component: ServiceDetails,
       },
       {
         path: "coverage",
