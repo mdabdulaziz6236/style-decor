@@ -76,7 +76,6 @@ const MyBookings = () => {
       }
     });
   };
-
   /* Handle Update Booking Submission */
   const onUpdateSubmit = async (data) => {
     try {
@@ -112,7 +111,17 @@ const MyBookings = () => {
       });
     }
   };
-
+  const handlePayment = async(booking) => {
+    const bookingInfo = {
+      cost: booking.service_cost,
+      bookingId: booking._id,
+      userEmail: booking.user_email,
+      bookingName: booking.service_name,
+      trackingId:booking.trackingId
+    }
+    const res = await axiosSecure.post('/payment-checkout-session',bookingInfo)
+    window.location.assign(res.data.url)
+  };
   if (isLoading) {
     return <Loading />;
   }
@@ -193,14 +202,13 @@ const MyBookings = () => {
                 <td className="flex space-x-2">
                   {/* Pay Button (Only if pending) */}
                   {booking.paymentStatus === "pending" && (
-                    <Link to={`/dashboard/payment/${booking._id}`}>
-                      <button
-                        className="btn btn-sm btn-success text-white tooltip"
-                        data-tip="Pay Now"
-                      >
-                        <FaCreditCard />
-                      </button>
-                    </Link>
+                    <button
+                      onClick={() => handlePayment(booking)}
+                      className="btn btn-sm btn-success text-white tooltip"
+                      data-tip="Pay Now"
+                    >
+                      <FaCreditCard />
+                    </button>
                   )}
 
                   {/* Update Button */}
@@ -291,15 +299,13 @@ const MyBookings = () => {
                 {/* 3. Action Buttons Grid */}
                 <div className="grid grid-cols-3 gap-2 pt-3 border-t border-base-200">
                   {booking.paymentStatus === "pending" ? (
-                    <Link
-                      to={`/dashboard/payment/${booking._id}`}
-                      className="w-full"
+                    <button
+                      onClick={() => handlePayment(booking)}
+                      className="btn btn-sm btn-success w-full text-white rounded-lg flex flex-col items-center gap-0 h-auto py-1"
                     >
-                      <button className="btn btn-sm btn-success w-full text-white rounded-lg flex flex-col items-center gap-0 h-auto py-1">
-                        <FaCreditCard />
-                        <span className="text-[9px] mt-0.5">Pay</span>
-                      </button>
-                    </Link>
+                      <FaCreditCard />
+                      <span className="text-[9px] mt-0.5">Pay</span>
+                    </button>
                   ) : (
                     <button
                       disabled

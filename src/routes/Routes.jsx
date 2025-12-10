@@ -19,6 +19,8 @@ import AddService from "../pages/Dashboard/dashboardHome/Admin/AddService";
 import ServiceDetails from "../pages/ServiceDetails/ServiceDetails";
 import MyBookings from "../pages/Dashboard/User/MyBookings";
 import BookingTrack from "../pages/BookingTrack/BookingTrack";
+import PaymentSuccess from "../pages/Dashboard/Payment/PaymentSuccess";
+import PaymentCancelled from "../pages/Dashboard/Payment/PaymentCancelled";
 
 export const router = createBrowserRouter([
   {
@@ -36,7 +38,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "services/:id",
-         loader: () => fetch("/coverage-area.json").then((res) => res.json()),
+        loader: () => fetch("/coverage-area.json").then((res) => res.json()),
         Component: ServiceDetails,
       },
       {
@@ -51,10 +53,11 @@ export const router = createBrowserRouter([
       {
         path: "contact",
         Component: Contact,
-      },{
-        path: 'booking-track/:trackingId',
-        Component:BookingTrack
-      }
+      },
+      {
+        path: "booking-track/:trackingId",
+        Component: BookingTrack,
+      },
     ],
   },
   {
@@ -89,15 +92,27 @@ export const router = createBrowserRouter([
       },
       {
         path: "approve-decorator",
-        element: <AdminRoute>
-          <ApproveDecorators></ApproveDecorators>
-        </AdminRoute>
+        element: (
+          <AdminRoute>
+            <ApproveDecorators></ApproveDecorators>
+          </AdminRoute>
+        ),
       },
       {
         path: "add-service",
-        element: <AdminRoute>
-          <AddService></AddService>
-        </AdminRoute>
+        element: (
+          <AdminRoute>
+            <AddService></AddService>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "payment-success",
+        Component: PaymentSuccess,
+      },
+      {
+        path: "payment-cancelled",
+        Component: PaymentCancelled,
       },
       {
         path: "decorator",
