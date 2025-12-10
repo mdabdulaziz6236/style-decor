@@ -18,6 +18,7 @@ import AdminRoute from "./AdminRoute";
 import AddService from "../pages/Dashboard/dashboardHome/Admin/AddService";
 import ServiceDetails from "../pages/ServiceDetails/ServiceDetails";
 import MyBookings from "../pages/Dashboard/User/MyBookings";
+import BookingTrack from "../pages/BookingTrack/BookingTrack";
 
 export const router = createBrowserRouter([
   {
@@ -50,7 +51,10 @@ export const router = createBrowserRouter([
       {
         path: "contact",
         Component: Contact,
-      },
+      },{
+        path: 'booking-track/:trackingId',
+        Component:BookingTrack
+      }
     ],
   },
   {

@@ -21,7 +21,7 @@ import {
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAxios from "../../hooks/useAxios";
 import useAuth from "../../hooks/useAuth";
-import Loading from "../../components/Loading/Loading";
+import Loading from "../../Components/Loading/Loading";
 
 const ServiceDetails = () => {
   const { id } = useParams();

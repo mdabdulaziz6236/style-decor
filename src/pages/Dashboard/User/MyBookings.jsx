@@ -131,7 +131,7 @@ const MyBookings = () => {
               <th>#</th>
               <th>Service Info</th>
               <th>Date & Time</th>
-              <th>Address</th>
+              <th>Tracking ID</th>
               <th>Payment & Cost</th>
               <th>Actions</th>
             </tr>
@@ -164,12 +164,21 @@ const MyBookings = () => {
                     {booking.booking_date}
                   </div>
                 </td>
-                <td className="max-w-[200px] truncate" title={booking.address}>
-                  {booking.district}, {booking.area}
+                <td
+                  className="max-w-[200px] font-bold truncate"
+                  title={booking.trackingId}
+                >
+                  <Link
+                    to={`/booking-track/${booking.trackingId}`}
+                    className="text-primary hover:underline hover:text-green-500 block w-full"
+                  >
+                    {booking.trackingId}
+                  </Link>
                 </td>
+
                 <td>
                   <div className="font-bold text-lg flex items-center">
-                    <FaDollarSign className="text-xs" /> {booking.service_cost}
+                    ৳ {booking.service_cost}
                   </div>
                   <span
                     className={`badge badge-sm font-bold capitalize ${
@@ -247,7 +256,7 @@ const MyBookings = () => {
                       <h3 className="font-bold text-lg text-base-content leading-tight">
                         {booking.service_name}
                       </h3>
-                      <p className="text-xs text-neutral/60">
+                      <p className="text-xs text-white">
                         ৳ {booking.service_cost}
                       </p>
                     </div>
@@ -261,15 +270,21 @@ const MyBookings = () => {
 
                 {/* 2. Info Grid (Date & Location) */}
                 <div className="grid grid-cols-2 gap-3 mb-3 text-sm">
-                  <div className="flex items-center gap-2 text-neutral/80 bg-base-200/50 p-2 rounded-lg">
+                  <div className="flex items-center gap-2 text-white bg-base-200/50 p-2 rounded-lg">
                     <FaCalendarAlt className="text-primary text-xs" />
                     <span className="font-medium truncate">
                       {booking.booking_date}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 text-neutral/80 bg-base-200/50 p-2 rounded-lg">
-                    <FaMapMarkerAlt className="text-primary text-xs" />
-                    <span className="font-medium truncate">{booking.area}</span>
+                  <div className="flex items-center gap-2 text-white bg-base-200/50 p-2 rounded-lg">
+                    <span className="font-medium truncate">
+                      <Link
+                        to={`/booking-track/${booking.trackingId}`}
+                        className="text-primary hover:underline hover:text-green-500 block w-full"
+                      >
+                        {booking.trackingId}
+                      </Link>
+                    </span>
                   </div>
                 </div>
 

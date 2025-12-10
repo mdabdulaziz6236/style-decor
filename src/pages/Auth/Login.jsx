@@ -54,7 +54,6 @@ const Login = () => {
           photoURL: photoURL,
         };
         const dbRes = await simpleAxios.post("/users", userInfo);
-        console.log(dbRes.data.insertedId)
         if (dbRes.data.insertedId) {
         
           Swal.fire({
