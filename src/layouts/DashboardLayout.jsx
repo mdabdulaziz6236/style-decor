@@ -3,7 +3,8 @@ import { FaCalendarCheck, FaHouseUser, FaRegUserCircle, FaUserPlus } from "react
 import { Link, Outlet } from "react-router";
 import useRole from "../hooks/useRole";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
-import Loading from "../components/Loading/Loading";
+import Loading from "../Components/Loading/Loading";
+import { MdPayment } from "react-icons/md";
 
 
 const DashboardLayout = () => {
@@ -145,6 +146,17 @@ const DashboardLayout = () => {
                   <FaCalendarCheck  className="my-1.5 inline-block size-4" />
                   <span className="is-drawer-close:hidden">
                     My Bookings
+                  </span>
+                </Link>
+              </li>
+             <li
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Payment History"
+              >
+                <Link to="/dashboard/payment-history">
+                  <MdPayment   className="my-1.5 inline-block size-4" />
+                  <span className="is-drawer-close:hidden">
+                    Payment History
                   </span>
                 </Link>
               </li>
