@@ -1,9 +1,10 @@
 import React from "react";
-import { FaHouseUser, FaRegUserCircle, FaUserPlus } from "react-icons/fa";
+import { FaCalendarCheck, FaHouseUser, FaRegUserCircle, FaUserPlus } from "react-icons/fa";
 import { Link, Outlet } from "react-router";
 import useRole from "../hooks/useRole";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
-import Loading from "../Components/Loading/Loading";
+import Loading from "../components/Loading/Loading";
+
 
 const DashboardLayout = () => {
   const { role, roleLoading } = useRole();
@@ -69,7 +70,7 @@ const DashboardLayout = () => {
               <Link
                 to="/dashboard"
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Homepage"
+                data-tip="Dashboard Home"
               >
                 {/* Home icon */}
                 <svg
@@ -85,7 +86,7 @@ const DashboardLayout = () => {
                   <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
                   <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                 </svg>
-                <span className="is-drawer-close:hidden">Homepage</span>
+                <span className="is-drawer-close:hidden">Dashboard Home</span>
               </Link>
             </li>
             <li
@@ -136,6 +137,17 @@ const DashboardLayout = () => {
                 </Link>
               </li>
             )}
+             <li
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="My Bookings"
+              >
+                <Link to="/dashboard/my-bookings">
+                  <FaCalendarCheck  className="my-1.5 inline-block size-4" />
+                  <span className="is-drawer-close:hidden">
+                    My Bookings
+                  </span>
+                </Link>
+              </li>
           </ul>
         </div>
       </div>

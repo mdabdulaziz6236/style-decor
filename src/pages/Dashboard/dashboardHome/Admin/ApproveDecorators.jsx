@@ -14,7 +14,7 @@ import {
 import { IoPersonRemoveSharp } from "react-icons/io5";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
-import Loading from "../../../../Components/Loading/Loading";
+import Loading from "../../../../components/Loading/Loading";
 
 const ApproveDecorators = () => {
   const axiosSecure = useAxiosSecure();

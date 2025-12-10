@@ -17,6 +17,7 @@ import ErrorPage from "../pages/eroor/ErrorPage";
 import AdminRoute from "./AdminRoute";
 import AddService from "../pages/Dashboard/dashboardHome/Admin/AddService";
 import ServiceDetails from "../pages/ServiceDetails/ServiceDetails";
+import MyBookings from "../pages/Dashboard/User/MyBookings";
 
 export const router = createBrowserRouter([
   {
@@ -77,6 +78,10 @@ export const router = createBrowserRouter([
       {
         path: "profile",
         Component: Profile,
+      },
+      {
+        path: "my-bookings",
+        Component: MyBookings,
       },
       {
         path: "approve-decorator",

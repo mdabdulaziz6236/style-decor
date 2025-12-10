@@ -6,14 +6,15 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAxios from "../../hooks/useAxios";
+
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  const simpleAxios = useAxios()
   const { googleLogin, signInUser, registerUser, updateUserProfile } =
     useAuth();
-  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const location = useLocation();
   const {
@@ -26,7 +27,7 @@ const Login = () => {
   const handleRegister = async (data) => {
     try {
       // 1. Create User
-      await registerUser(data.email, data.password);
+      await registerUser(data.email, data.password)
 
       // 2. Prepare Image Upload
       const formData = new FormData();
@@ -39,6 +40,7 @@ const Login = () => {
 
       if (res.data.success) {
         const photoURL = res.data.data.url;
+        console.log(photoURL)
         const updateProfile = {
           displayName: data.name,
           photoURL: photoURL,
@@ -51,8 +53,10 @@ const Login = () => {
           displayName: data.name,
           photoURL: photoURL,
         };
-        const dbRes = await axiosSecure.post("/users", userInfo);
+        const dbRes = await simpleAxios.post("/users", userInfo);
+        console.log(dbRes.data.insertedId)
         if (dbRes.data.insertedId) {
+        
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -80,7 +84,7 @@ const Login = () => {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: `Welcome  ${data.name}!`,
+          title: `Welcome! Sign in successfully`,
           showConfirmButton: false,
           timer: 1500,
         });
@@ -110,7 +114,7 @@ const Login = () => {
           name: user.displayName,
           photoURL: user.photoURL,
         };
-        await axiosSecure.post("/users", userInfo);
+        await simpleAxios.post("/users", userInfo);
         Swal.fire({
           position: "top-end",
           icon: "success",

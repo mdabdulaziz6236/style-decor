@@ -87,10 +87,8 @@ const ServiceDetails = () => {
       district: data.district,
       area: data.area,
       full_address: data.address,
-      note: data.note, 
-      createdAt: new Date(),
-      status: "pending",
-      paymentStatus: "pending",
+      note: data.note,
+      user_phone: data.phone,
     };
     try {
       const res = await axiosSecure.post("/bookings", bookingData);
@@ -125,7 +123,7 @@ const ServiceDetails = () => {
         confirmButtonText: "Login",
       }).then((result) => {
         if (result.isConfirmed)
-          navigate("/login", { state: { from: location } });
+          navigate("/auth/login", { state: { from: location } });
       });
     }
   };
@@ -395,14 +393,40 @@ const ServiceDetails = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-bold">Address Details*</span>
+                  <span className="label-text font-bold">
+                    Your Mobile Number
+                  </span>
                 </label>
                 <input
                   type="text"
+                  {...register("phone", {
+                    required: "Mobile number is required",
+                  })}
+                  className={`input input-bordered w-full ${
+                    errors.phone ? "input-error" : ""
+                  }`}
+                  placeholder="Inter Your active phone number"
+                />
+                {errors.phone && (
+                  <span className="text-error text-xs mt-1">
+                    {errors.phone.message}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {/* 4. Note Field  */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text font-bold">Address Details*</span>
+                </label>
+                <textarea
+                  type="textarea"
                   {...register("address", {
                     required: "Full address is required",
                   })}
-                  className={`input input-bordered w-full ${
+                  className={`textarea w-full textarea-bordered ${
                     errors.address ? "input-error" : ""
                   }`}
                   placeholder="Road No, House No, Flat No..."
@@ -413,20 +437,18 @@ const ServiceDetails = () => {
                   </span>
                 )}
               </div>
-            </div>
-
-            {/* 4. Note Field  */}
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text font-bold flex items-center gap-2">
-                  <FaEdit /> Additional Note (Optional)
-                </span>
-              </label>
-              <textarea
-                {...register("note")}
-                className="textarea w-full textarea-bordered h-20 focus:textarea-primary"
-                placeholder="Any specific instructions or requests for the decorator..."
-              ></textarea>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text font-bold flex items-center gap-2">
+                    <FaEdit /> Additional Note (Optional)
+                  </span>
+                </label>
+                <textarea
+                  {...register("note")}
+                  className="textarea w-full textarea-bordered h-20 focus:textarea-primary"
+                  placeholder="Any specific instructions or requests for the decorator..."
+                ></textarea>
+              </div>
             </div>
 
             {/* Actions */}
