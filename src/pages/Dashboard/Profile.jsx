@@ -111,7 +111,7 @@ const Profile = () => {
         {/* Cover Photo */}
         <div className="relative h-33 md:h-48">
           <div
-            className="absolute inset-0 opacity-20 bg-cover bg-center"
+            className="absolute inset-0 opacity-50 bg-cover bg-center"
             style={{ backgroundImage: `url(${bgImg})` }}
           ></div>
           <div className="absolute inset-0 bg-linear-to-t from-base-100 to-transparent"></div>

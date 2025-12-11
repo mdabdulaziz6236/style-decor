@@ -13,6 +13,7 @@ import { MdPayment } from "react-icons/md";
 import { LuUserCheck } from "react-icons/lu";
 import { AiOutlinePlus, AiOutlineUnorderedList } from "react-icons/ai";
 import Loading from "../Components/Loading/Loading";
+import logo from "../assets/logo.svg";
 
 const DashboardLayout = () => {
   const { role, roleLoading } = useRole();
@@ -69,9 +70,11 @@ const DashboardLayout = () => {
                 data-tip="Home"
               >
                 <FaHouseUser className="my-1.5 inline-block size-4" />
-                <span className="is-drawer-close:hidden text-2xl font-black  text-primary tracking-tight">
-                  Style Decor
-                </span>
+                <img
+                  src={logo}
+                  className="is-drawer-close:hidden text-2xl font-black  text-primary tracking-tight"
+                  alt=""
+                />
               </Link>
             </li>
             <li>
@@ -176,9 +179,7 @@ const DashboardLayout = () => {
               >
                 <Link to="/dashboard/my-earnings">
                   <FaMoneyBillWave className="my-1.5 inline-block size-4" />
-                  <span className="is-drawer-close:hidden">
-                    My Earnings
-                  </span>
+                  <span className="is-drawer-close:hidden">My Earnings</span>
                 </Link>
               </li>
             )}

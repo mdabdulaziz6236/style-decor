@@ -1,9 +1,9 @@
 import React from "react";
-
 import { Link, NavLink } from "react-router";
 import MyLink from "../MyLinks/MyLink";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import logo from "../../assets/logo.svg";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -44,8 +44,8 @@ const Navbar = () => {
     });
   };
   return (
-    <div className="navbar  shadow-sm">
-      <div className="navbar-start">
+    <div className="navbar bg-[#091635]   sticky top-0  z-50 shadow-lg">
+      <div className="navbar-start relative  z-50">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -71,8 +71,11 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <NavLink to="/" className="hover:underline text-xl">
-          Style Decor
+        <NavLink
+          to="/"
+          className="hover:underline flex justify-center items-center font-bold text-primary text-xl"
+        >
+          <img className="w-auto h-12" src={logo} alt="" />
         </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">

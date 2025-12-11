@@ -10,7 +10,7 @@ const RootLayout = () => {
     return <Loading></Loading>;
   }
   return (
-    <div className="max-w-7xl mx-auto bg-[#101d22]">
+    <div className="max-w-7xl mx-auto ">
       <Navbar></Navbar>
       <Outlet></Outlet>
       <Footer></Footer>
