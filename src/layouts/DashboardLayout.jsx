@@ -2,6 +2,7 @@ import React from "react";
 import {
   FaCalendarCheck,
   FaHouseUser,
+  FaMoneyBillWave,
   FaRegUserCircle,
   FaUserPlus,
 } from "react-icons/fa";
@@ -10,7 +11,7 @@ import useRole from "../hooks/useRole";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { MdPayment } from "react-icons/md";
 import { LuUserCheck } from "react-icons/lu";
-import { AiOutlineUnorderedList } from "react-icons/ai";
+import { AiOutlinePlus, AiOutlineUnorderedList } from "react-icons/ai";
 import Loading from "../components/Loading/Loading";
 
 const DashboardLayout = () => {
@@ -137,7 +138,7 @@ const DashboardLayout = () => {
                 data-tip="Add Service"
               >
                 <Link to="/dashboard/add-service">
-                  <RiVerifiedBadgeFill className="my-1.5 inline-block size-4" />
+                  <AiOutlinePlus className="my-1.5 inline-block size-4" />
                   <span className="is-drawer-close:hidden">Add Service</span>
                 </Link>
               </li>
@@ -164,6 +165,19 @@ const DashboardLayout = () => {
                   <AiOutlineUnorderedList className="my-1.5 inline-block size-4" />
                   <span className="is-drawer-close:hidden">
                     My Assigned Projects
+                  </span>
+                </Link>
+              </li>
+            )}
+            {role === "decorator" && (
+              <li
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="My Earnings"
+              >
+                <Link to="/dashboard/my-earnings">
+                  <FaMoneyBillWave className="my-1.5 inline-block size-4" />
+                  <span className="is-drawer-close:hidden">
+                    My Earnings
                   </span>
                 </Link>
               </li>

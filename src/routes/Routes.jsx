@@ -25,6 +25,7 @@ import PaymentCancelled from "../pages/Dashboard/Payment/PaymentCancelled";
 import PaymentHistory from "../pages/Dashboard/Payment/PaymentHistory";
 import AssignDecorator from "../pages/Dashboard/dashboardHome/Admin/AssignDecorator";
 import MyAssignedProjects from "../pages/Dashboard/Decorator/MyAssignedProjects";
+import MyEarnings from "../pages/Dashboard/Decorator/MyEarnings";
 
 export const router = createBrowserRouter([
   {
@@ -135,6 +136,14 @@ export const router = createBrowserRouter([
         element: (
           <DecoratorRoute>
             <MyAssignedProjects></MyAssignedProjects>
+          </DecoratorRoute>
+        ),
+      },
+      {
+        path: "my-earnings",
+        element: (
+          <DecoratorRoute>
+            <MyEarnings></MyEarnings>
           </DecoratorRoute>
         ),
       },
