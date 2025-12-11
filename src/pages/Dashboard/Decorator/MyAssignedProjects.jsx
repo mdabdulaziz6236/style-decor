@@ -14,7 +14,7 @@ import { MdOutlineMarkEmailUnread } from "react-icons/md";
 import { AiOutlineEye } from "react-icons/ai";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
-import Loading from "../../../components/Loading/Loading";
+import Loading from "../../../Components/Loading/Loading";
 
 const MyAssignedProjects = () => {
   const { user } = useAuth();
@@ -162,7 +162,7 @@ const MyAssignedProjects = () => {
                       onClick={() => openDetailsModal(task)}
                       className="flex items-center text-blue-600 hover:text-green-600 gap-1  font-bold text-xs bg-blue-100 px-2 py-1 rounded w-fit"
                     >
-                      <AiOutlineEye /> View Full Details
+                      <AiOutlineEye /> View Details
                     </button>
                   </div>
                 </td>

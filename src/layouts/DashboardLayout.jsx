@@ -12,7 +12,7 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { MdPayment } from "react-icons/md";
 import { LuUserCheck } from "react-icons/lu";
 import { AiOutlinePlus, AiOutlineUnorderedList } from "react-icons/ai";
-import Loading from "../components/Loading/Loading";
+import Loading from "../Components/Loading/Loading";
 
 const DashboardLayout = () => {
   const { role, roleLoading } = useRole();
