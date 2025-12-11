@@ -22,6 +22,7 @@ import BookingTrack from "../pages/BookingTrack/BookingTrack";
 import PaymentSuccess from "../pages/Dashboard/Payment/PaymentSuccess";
 import PaymentCancelled from "../pages/Dashboard/Payment/PaymentCancelled";
 import PaymentHistory from "../pages/Dashboard/Payment/PaymentHistory";
+import AssignDecorator from "../pages/Dashboard/dashboardHome/Admin/AssignDecorator";
 
 export const router = createBrowserRouter([
   {
@@ -104,6 +105,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AddService></AddService>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "assign-decorator",
+        element: (
+          <AdminRoute>
+            <AssignDecorator></AssignDecorator>
           </AdminRoute>
         ),
       },

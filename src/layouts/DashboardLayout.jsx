@@ -1,11 +1,16 @@
 import React from "react";
-import { FaCalendarCheck, FaHouseUser, FaRegUserCircle, FaUserPlus } from "react-icons/fa";
+import {
+  FaCalendarCheck,
+  FaHouseUser,
+  FaRegUserCircle,
+  FaUserPlus,
+} from "react-icons/fa";
 import { Link, Outlet } from "react-router";
 import useRole from "../hooks/useRole";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import Loading from "../Components/Loading/Loading";
 import { MdPayment } from "react-icons/md";
-
+import { LuUserCheck } from "react-icons/lu";
 
 const DashboardLayout = () => {
   const { role, roleLoading } = useRole();
@@ -132,34 +137,41 @@ const DashboardLayout = () => {
               >
                 <Link to="/dashboard/add-service">
                   <RiVerifiedBadgeFill className="my-1.5 inline-block size-4" />
+                  <span className="is-drawer-close:hidden">Add Service</span>
+                </Link>
+              </li>
+            )}
+            {role === "admin" && (
+              <li
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Assign Decorator"
+              >
+                <Link to="/dashboard/assign-decorator">
+                  <LuUserCheck className="my-1.5 inline-block size-4" />
                   <span className="is-drawer-close:hidden">
-                    Add Service
+                    Assign Decorator
                   </span>
                 </Link>
               </li>
             )}
-             <li
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="My Bookings"
-              >
-                <Link to="/dashboard/my-bookings">
-                  <FaCalendarCheck  className="my-1.5 inline-block size-4" />
-                  <span className="is-drawer-close:hidden">
-                    My Bookings
-                  </span>
-                </Link>
-              </li>
-             <li
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Payment History"
-              >
-                <Link to="/dashboard/payment-history">
-                  <MdPayment   className="my-1.5 inline-block size-4" />
-                  <span className="is-drawer-close:hidden">
-                    Payment History
-                  </span>
-                </Link>
-              </li>
+            <li
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              data-tip="My Bookings"
+            >
+              <Link to="/dashboard/my-bookings">
+                <FaCalendarCheck className="my-1.5 inline-block size-4" />
+                <span className="is-drawer-close:hidden">My Bookings</span>
+              </Link>
+            </li>
+            <li
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              data-tip="Payment History"
+            >
+              <Link to="/dashboard/payment-history">
+                <MdPayment className="my-1.5 inline-block size-4" />
+                <span className="is-drawer-close:hidden">Payment History</span>
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

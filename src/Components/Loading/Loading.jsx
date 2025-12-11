@@ -7,8 +7,7 @@ const Loading = () => {
         Style<span className="text-primary">Decor</span>
       </span>
 
-        <span className="loading loading-bars loading-md text-primary"></span>
-
+      <span className="loading loading-bars loading-md text-primary"></span>
     </div>
   );
 };
