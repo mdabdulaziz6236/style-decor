@@ -1,10 +1,9 @@
 import ForbiddenPage from "../Components/Forbidden/ForbiddenPage";
-import Loading from "../Components/Loading/Loading";
+import Loading from "../components/Loading/Loading";
 import useAuth from "../hooks/useAuth";
 import useRole from "../hooks/useRole";
 
-
-const AdminRoute = ({ children }) => {
+const DecoratorRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const { role, roleLoading } = useRole();
   if (loading || roleLoading) return <Loading />;
@@ -14,4 +13,4 @@ const AdminRoute = ({ children }) => {
   return <ForbiddenPage />;
 };
 
-export default AdminRoute;
+export default DecoratorRoute;

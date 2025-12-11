@@ -15,6 +15,7 @@ import ApproveDecorators from "../pages/Dashboard/dashboardHome/Admin/ApproveDec
 import PrivetRoute from "./PrivetRoute";
 import ErrorPage from "../pages/eroor/ErrorPage";
 import AdminRoute from "./AdminRoute";
+import DecoratorRoute from "./DecoratorRoute";
 import AddService from "../pages/Dashboard/dashboardHome/Admin/AddService";
 import ServiceDetails from "../pages/ServiceDetails/ServiceDetails";
 import MyBookings from "../pages/Dashboard/User/MyBookings";
@@ -23,6 +24,7 @@ import PaymentSuccess from "../pages/Dashboard/Payment/PaymentSuccess";
 import PaymentCancelled from "../pages/Dashboard/Payment/PaymentCancelled";
 import PaymentHistory from "../pages/Dashboard/Payment/PaymentHistory";
 import AssignDecorator from "../pages/Dashboard/dashboardHome/Admin/AssignDecorator";
+import MyAssignedProjects from "../pages/Dashboard/Decorator/MyAssignedProjects";
 
 export const router = createBrowserRouter([
   {
@@ -127,6 +129,14 @@ export const router = createBrowserRouter([
       {
         path: "payment-history",
         Component: PaymentHistory,
+      },
+      {
+        path: "my-assigned-projects",
+        element: (
+          <DecoratorRoute>
+            <MyAssignedProjects></MyAssignedProjects>
+          </DecoratorRoute>
+        ),
       },
       {
         path: "decorator",

@@ -8,9 +8,10 @@ import {
 import { Link, Outlet } from "react-router";
 import useRole from "../hooks/useRole";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
-import Loading from "../Components/Loading/Loading";
 import { MdPayment } from "react-icons/md";
 import { LuUserCheck } from "react-icons/lu";
+import { AiOutlineUnorderedList } from "react-icons/ai";
+import Loading from "../components/Loading/Loading";
 
 const DashboardLayout = () => {
   const { role, roleLoading } = useRole();
@@ -150,6 +151,19 @@ const DashboardLayout = () => {
                   <LuUserCheck className="my-1.5 inline-block size-4" />
                   <span className="is-drawer-close:hidden">
                     Assign Decorator
+                  </span>
+                </Link>
+              </li>
+            )}
+            {role === "decorator" && (
+              <li
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="My Assigned Projects"
+              >
+                <Link to="/dashboard/my-assigned-projects">
+                  <AiOutlineUnorderedList className="my-1.5 inline-block size-4" />
+                  <span className="is-drawer-close:hidden">
+                    My Assigned Projects
                   </span>
                 </Link>
               </li>

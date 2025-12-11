@@ -10,7 +10,7 @@ import {
   FaTasks,
 } from "react-icons/fa";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
-import Loading from "../../../../Components/Loading/Loading";
+import Loading from "../../../../components/Loading/Loading";
 
 const AssignDecorator = () => {
   const [selectedBooking, setSelectedBooking] = useState(null);
@@ -169,7 +169,7 @@ const AssignDecorator = () => {
 
             {bookings.length === 0 && (
               <tr>
-                <td colSpan="5" className="text-center py-10 text-neutral/50">
+                <td colSpan="5" className="text-center py-10 text-pink-500">
                   No pending assignments available.
                 </td>
               </tr>

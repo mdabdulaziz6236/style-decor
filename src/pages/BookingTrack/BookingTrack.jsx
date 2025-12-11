@@ -22,14 +22,14 @@ const BookingTrack = () => {
 
   return (
     <div className="flex justify-center items-center flex-col min-h-screen bg-base-100 font-display p-4">
-      
       {/* Header */}
       <div className="text-center pb-12 space-y-2">
         <h3 className="text-3xl md:text-4xl font-black text-primary">
           Track Your Booking
         </h3>
         <p className="text-white text-lg">
-          Tracking ID : <span className="font-mono font-bold text-red-500">{trackingId}</span>
+          Tracking ID :{" "}
+          <span className="font-mono font-bold text-red-500">{trackingId}</span>
         </p>
       </div>
 
@@ -37,20 +37,24 @@ const BookingTrack = () => {
       <div className="w-full max-w-4xl">
         {trackingLogs.length > 0 ? (
           <ul className="timeline timeline-vertical timeline-snap-icon max-md:timeline-compact">
-            
             {trackingLogs.map((log, index) => (
-              <li className="flex justify-center space-x-1.5 items-center" key={log._id || index}>
-                
+              <li
+                className="flex justify-center space-x-1.5 items-center"
+                key={log._id || index}
+              >
                 {/* Connecting Lines */}
                 {index !== 0 && <hr className="bg-primary" />}
-                
+
                 {/* Date & Time (Left Side) */}
                 <div className="timeline-start md:text-end mb-10 md:mb-0">
                   <div className="font-mono italic text-sm opacity-70">
-                    {new Date(log.date || log.createdAt).toLocaleString("en-US", {
-                      dateStyle: "medium",
-                      timeStyle: "short",
-                    })}
+                    {new Date(log.date || log.createdAt).toLocaleString(
+                      "en-US",
+                      {
+                        dateStyle: "medium",
+                        timeStyle: "short",
+                      }
+                    )}
                   </div>
                 </div>
 
@@ -65,13 +69,15 @@ const BookingTrack = () => {
                 <div className="timeline-end mb-10 md:mb-0">
                   <div className="bg-base-200 p-4 rounded-xl shadow-sm border border-base-300">
                     <p className="text-yellow-600 mt-1">
-                      {log.details || "Your booking status has been updated."}
+                      {log.status || "Your booking status has been updated."}
                     </p>
                   </div>
                 </div>
-                
+
                 {/* Bottom Line */}
-                {index !== trackingLogs.length - 1 && <hr className="bg-primary"/>}
+                {index !== trackingLogs.length - 1 && (
+                  <hr className="bg-primary" />
+                )}
               </li>
             ))}
           </ul>
@@ -79,12 +85,15 @@ const BookingTrack = () => {
           /* Empty State */
           <div className="text-center py-10   rounded-2xl">
             <FaBoxOpen className="text-6xl text-pink-500 mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-white">No tracking history found.</h3>
-            <p className="text-sm text-primary">Please check the ID or try again later.</p>
+            <h3 className="text-xl font-bold text-white">
+              No tracking history found.
+            </h3>
+            <p className="text-sm text-primary">
+              Please check the ID or try again later.
+            </p>
           </div>
         )}
       </div>
-
     </div>
   );
 };
