@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router";
-import { FaLightbulb, FaGem, FaCheckCircle, FaSlidersH } from "react-icons/fa";
 import img1 from "../../assets/about-1.png";
 import img2 from "../../assets/about-2.png";
 
@@ -50,59 +49,6 @@ const About = () => {
                 className="rounded-xl w-full h-auto lg:h-70 object-cover"
               />
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Core Values Section */}
-      <div className="bg-base-100 py-10 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 animate-fadeIn">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary">
-              Our Core Values
-            </h2>
-            <p className="text-secondary mt-3 max-w-2xl mx-auto">
-              The principles that guide our work, ensuring every project we
-              undertake is a masterpiece of design and functionality.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: <FaLightbulb />,
-                title: "Innovation",
-                text: "We constantly explore the latest in smart technology to offer futuristic and convenient solutions.",
-              },
-              {
-                icon: <FaGem />,
-                title: "Elegance",
-                text: "Our aesthetic is rooted in timeless design, ensuring your space is both modern and enduring.",
-              },
-              {
-                icon: <FaCheckCircle />,
-                title: "Reliability",
-                text: "We deliver what we promise, with meticulous attention to detail and unwavering quality.",
-              },
-              {
-                icon: <FaSlidersH />,
-                title: "Personalization",
-                text: "Every project is a unique collaboration, tailored to your individual style and needs.",
-              },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="bg-base-200 p-8 rounded-2xl text-center border border-base-300 hover:border-primary/50 transition-colors duration-300 hover:scale-105 transform"
-              >
-                <div className="flex justify-center mb-4">
-                  <div className="text-5xl text-primary">{item.icon}</div>
-                </div>
-                <h3 className="text-xl font-bold text-base-content mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-secondary text-sm">{item.text}</p>
-              </div>
-            ))}
           </div>
         </div>
       </div>

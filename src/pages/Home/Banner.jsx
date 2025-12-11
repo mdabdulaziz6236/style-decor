@@ -13,7 +13,7 @@ const Banner = () => {
         backgroundPosition: "center",
       }}
     >
-      <div className="hero-overlay bg-black/60"></div>
+      <div className="hero-overlay bg-black/50"></div>
       <div className="hero-content text-center text-white relative z-10">
         <div className="max-w-2xl">
           <motion.h1
