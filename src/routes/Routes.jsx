@@ -35,6 +35,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
+         loader: () => fetch("/coverage-area.json").then((res) => res.json()),
         Component: Home,
       },
       {

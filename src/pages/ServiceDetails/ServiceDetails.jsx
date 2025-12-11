@@ -14,8 +14,6 @@ import {
   FaTag,
   FaUserTie,
   FaMoneyBillWave,
-  FaMapMarkerAlt,
-  FaCalendarAlt,
   FaEdit,
 } from "react-icons/fa";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
@@ -26,13 +24,13 @@ import Loading from "../../Components/Loading/Loading";
 const ServiceDetails = () => {
   const { id } = useParams();
   const { user } = useAuth();
-  const locations = useLoaderData(); // Router থেকে লোকেশন ডাটা
+  const locations = useLoaderData();
   const axiosPublic = useAxios();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const location = useLocation();
 
-  // ১. সার্ভিস ডাটা লোড করা
+
   const { data: service, isLoading } = useQuery({
     queryKey: ["service", id],
     queryFn: async () => {

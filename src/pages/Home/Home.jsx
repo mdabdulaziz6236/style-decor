@@ -1,10 +1,20 @@
 import React from 'react';
+import { useLoaderData } from 'react-router';
+import Banner from './Banner';
+import PopularServices from './PopularServices';
+import TopDecorators from './TopDecorators';
+import WhyChooseUs from './WhyChooseUs';
+import CoverageMap from './CoverageMap';
 
 const Home = () => {
+    const locations = useLoaderData()
     return (
-        <div className='min-h-screen '>
-            <h3>In the name of Allah Hafez. 
-            Salli alal Habib wa barik wa sallim Wa aihi wa ashabihi ajmain.</h3>
+        <div>
+            <Banner></Banner>
+            <PopularServices></PopularServices>
+            <TopDecorators></TopDecorators>
+            <WhyChooseUs></WhyChooseUs>
+            <CoverageMap locations={locations}></CoverageMap>
         </div>
     );
 };

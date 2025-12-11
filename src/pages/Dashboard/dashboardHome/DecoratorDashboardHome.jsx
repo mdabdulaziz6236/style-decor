@@ -50,7 +50,7 @@ const DecoratorDashboardHome = () => {
       {/* Welcome Section */}
       <div className="mb-8 border-b border-base-300 pb-4">
         <h2 className="text-3xl font-black text-primary">
-          Welcome back, {user?.displayName}! 👋
+          Welcome back, {user?.displayName}
         </h2>
         <p className="text-base-content opacity-80 mt-1 font-medium text-lg">
           Dashboard Overview & Recent Activities.
