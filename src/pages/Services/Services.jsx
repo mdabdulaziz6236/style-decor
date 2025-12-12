@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Link } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -10,8 +9,10 @@ import {
   FaChevronRight,
   FaArrowRight,
 } from "react-icons/fa";
+import useAxios from "../../hooks/useAxios";
 
 const Services = () => {
+  const axios = useAxios()
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   const [sortOrder, setSortOrder] = useState("");
@@ -35,7 +36,7 @@ const Services = () => {
     queryKey: ["services", debouncedSearch, category, sortOrder, currentPage],
     queryFn: async () => {
       const res = await axios.get(
-        `https://style-decor-server-gamma.vercel.app/services?search=${debouncedSearch}&category=${category}&sort=${sortOrder}&page=${currentPage}&limit=${itemsPerPage}`
+        `/services?search=${debouncedSearch}&category=${category}&sort=${sortOrder}&page=${currentPage}&limit=${itemsPerPage}`
       );
       return res.data;
     },

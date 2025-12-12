@@ -149,7 +149,7 @@ const ManageUsers = () => {
                     <td>
                       <div className="flex items-center gap-3">
                         <div className="avatar placeholder">
-                          <div className="bg-gradient-to-br from-primary to-accent text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold shadow-md ring-1 ring-white/10">
+                          <div className="bg-linear-to-br from-primary to-accent text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold shadow-md ring-1 ring-white/10">
                             {user.photoURL ? (
                               <img src={user.photoURL} alt={user.name} />
                             ) : (

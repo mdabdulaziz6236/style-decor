@@ -7,7 +7,6 @@ import logo from "../../assets/logo.svg";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
-  console.log(user);
   const links = (
     <>
       <li>

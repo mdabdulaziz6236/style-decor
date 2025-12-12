@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "react-firebase-auth-60460",
+    "prod": "react-firebase-auth-60460"
+  },
+  "targets": {},
+  "etags": {}
+}

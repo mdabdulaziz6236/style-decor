@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 
 const axiosSecure = axios.create({
-  baseURL: "https://style-decor-server-gamma.vercel.app",
+  baseURL: import.meta.env.VITE_API_URL,
 });
 
 const useAxiosSecure = () => {

@@ -78,7 +78,6 @@ const ApproveDecorators = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
-  console.log(selectedDecorator)
   return (
     <div className="p-4">
       <h2 className="text-3xl md:text-5xl font-bold mb-6 text-primary">

@@ -40,7 +40,6 @@ const Login = () => {
 
       if (res.data.success) {
         const photoURL = res.data.data.url;
-        console.log(photoURL)
         const updateProfile = {
           displayName: data.name,
           photoURL: photoURL,

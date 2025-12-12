@@ -270,7 +270,7 @@ const AdminHome = () => {
       <div className="bg-base-200 rounded-2xl shadow-lg border border-base-300 overflow-hidden">
         <div className="p-5 border-b border-base-300 flex justify-between items-center">
           <h3 className="text-lg font-bold text-white">
-            Recent Bookings Latest {stats.recentBookings.length}
+            Recent Bookings Latest {stats.recentBookings?.length}
           </h3>
         </div>
 
