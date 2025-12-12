@@ -26,6 +26,7 @@ import PaymentHistory from "../pages/Dashboard/Payment/PaymentHistory";
 import AssignDecorator from "../pages/Dashboard/dashboardHome/Admin/AssignDecorator";
 import MyAssignedProjects from "../pages/Dashboard/Decorator/MyAssignedProjects";
 import MyEarnings from "../pages/Dashboard/Decorator/MyEarnings";
+import ManageUsers from "../pages/Dashboard/dashboardHome/Admin/ManageUsers";
 
 export const router = createBrowserRouter([
   {
@@ -109,6 +110,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AddService></AddService>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manage-users",
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
           </AdminRoute>
         ),
       },

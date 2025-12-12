@@ -14,6 +14,7 @@ import { LuUserCheck } from "react-icons/lu";
 import { AiOutlinePlus, AiOutlineUnorderedList } from "react-icons/ai";
 import Loading from "../Components/Loading/Loading";
 import logo from "../assets/logo.svg";
+import { Users } from "lucide-react";
 
 const DashboardLayout = () => {
   const { role, roleLoading } = useRole();
@@ -131,6 +132,19 @@ const DashboardLayout = () => {
                   <RiVerifiedBadgeFill className="my-1.5 inline-block size-4" />
                   <span className="is-drawer-close:hidden">
                     Approve Decorator
+                  </span>
+                </Link>
+              </li>
+            )}
+            {role === "admin" && (
+              <li
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Manage Users"
+              >
+                <Link to="/dashboard/manage-users">
+                  <Users className="my-1.5 inline-block size-4" />
+                  <span className="is-drawer-close:hidden">
+                    Manage Users
                   </span>
                 </Link>
               </li>

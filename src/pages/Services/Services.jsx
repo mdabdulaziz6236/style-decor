@@ -35,7 +35,7 @@ const Services = () => {
     queryKey: ["services", debouncedSearch, category, sortOrder, currentPage],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:3000/services?search=${debouncedSearch}&category=${category}&sort=${sortOrder}&page=${currentPage}&limit=${itemsPerPage}`
+        `https://style-decor-server-gamma.vercel.app/services?search=${debouncedSearch}&category=${category}&sort=${sortOrder}&page=${currentPage}&limit=${itemsPerPage}`
       );
       return res.data;
     },
