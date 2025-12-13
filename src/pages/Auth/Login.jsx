@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { FaGoogle, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
 import loginImg from "../../assets/login.png";
@@ -12,7 +12,6 @@ import useAxios from "../../hooks/useAxios";
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
-  const emailRef = useRef(null)
   const simpleAxios = useAxios()
   const { googleLogin, signInUser, registerUser, updateUserProfile } =
     useAuth();
@@ -21,6 +20,7 @@ const Login = () => {
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm();
 const from = location.state?.from?.pathname || "/";
@@ -127,7 +127,7 @@ const from = location.state?.from?.pathname || "/";
   };
   /* handle forgetPassword  */
   const handleForgetPassword =()=>{
-    const email = emailRef.current.value;
+    const email = getValues('email')
     navigate('/auth/forget-password',{state:{email}})
 
   }
@@ -237,7 +237,6 @@ const from = location.state?.from?.pathname || "/";
                 })}
                 type="email"
                 placeholder="Enter your email"
-                ref={emailRef}
                 className="input input-bordered w-full rounded-xl"
               />
               {errors.email?.type === "required" && (
@@ -289,7 +288,7 @@ const from = location.state?.from?.pathname || "/";
 
               {isLogin && (
                 <div className="text-right mt-1">
-                  <button onClick={handleForgetPassword} className="text-xs hover:text-green-500 text-primary ">
+                  <button type="button" onClick={handleForgetPassword} className="text-xs hover:text-green-500 text-primary ">
                     Forgot Password?
                   </button>
                 </div>

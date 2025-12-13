@@ -53,7 +53,7 @@ const ForgetPassword = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-base-200/50 px-4 py-10 relative overflow-hidden font-display">
+    <div className="min-h-screen flex items-center justify-center  px-4 py-10 relative overflow-hidden font-display">
       {/* Background Decorations */}
       <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-primary/20 rounded-full blur-[100px]"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-secondary/20 rounded-full blur-[100px]"></div>
@@ -114,7 +114,7 @@ const ForgetPassword = () => {
             </button>
           </form>
 
-          {/* Footer Links */}
+          {/*  Links */}
           <div className="mt-8 pt-6 border-t border-base-200">
             <Link
               to="/auth/login"
