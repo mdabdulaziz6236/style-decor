@@ -244,11 +244,11 @@ const ServiceDetails = () => {
           <div className="pt-4">
             <button
               onClick={openBookingModal}
-              className="btn btn-primary w-full btn-lg rounded-xl text-white font-bold shadow-xl hover:shadow-primary/40 transition-all flex items-center gap-2"
+              className="btn btn-primary md:w-1/2 w-full  mx-auto btn-lg rounded-xl text-gray-600 font-bold shadow-xl flex items-center gap-2"
             >
               <FaMoneyBillWave /> Book Service Now
             </button>
-            <p className="text-center text-xs text-neutral/40 mt-3">
+            <p className="text-center text-xs text-green-500 mt-3">
               *Payment will be collected after admin approval.
             </p>
           </div>

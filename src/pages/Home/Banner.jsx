@@ -6,7 +6,7 @@ import img1 from '../../assets/about-1.png';
 const Banner = () => {
   return (
     <div
-      className="hero min-h-[85vh] relative font-display"
+      className="hero h-[500px] md:min-h-[70vh]  relative font-display"
       style={{
         backgroundImage: `url(${img1})`,
         backgroundSize: "cover",

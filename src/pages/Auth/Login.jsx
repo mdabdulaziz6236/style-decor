@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { FaGoogle, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
 import loginImg from "../../assets/login.png";
@@ -12,6 +12,7 @@ import useAxios from "../../hooks/useAxios";
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  const emailRef = useRef(null)
   const simpleAxios = useAxios()
   const { googleLogin, signInUser, registerUser, updateUserProfile } =
     useAuth();
@@ -124,7 +125,12 @@ const from = location.state?.from?.pathname || "/";
       })
       .catch((error) => console.log(error.message));
   };
+  /* handle forgetPassword  */
+  const handleForgetPassword =()=>{
+    const email = emailRef.current.value;
+    navigate('/auth/forget-password',{state:{email}})
 
+  }
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-100 p-5">
       <div className="w-full max-w-5xl bg-base-200 rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row">
@@ -133,7 +139,7 @@ const from = location.state?.from?.pathname || "/";
           className="hidden lg:flex w-1/2 bg-cover bg-center relative"
           style={{ backgroundImage: `url(${loginImg})` }}
         >
-          <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent"></div>
+          <div className="absolute inset-0 bg-black/50"></div>
           <div className="relative z-10 p-10 mb-8">
             <h2 className="text-primary text-4xl font-black leading-tight">
               Your Smart Home, <br /> Your Perfect <br /> Celebration.
@@ -231,6 +237,7 @@ const from = location.state?.from?.pathname || "/";
                 })}
                 type="email"
                 placeholder="Enter your email"
+                ref={emailRef}
                 className="input input-bordered w-full rounded-xl"
               />
               {errors.email?.type === "required" && (
@@ -282,9 +289,9 @@ const from = location.state?.from?.pathname || "/";
 
               {isLogin && (
                 <div className="text-right mt-1">
-                  <Link className="text-xs text-primary hover:underline">
+                  <button onClick={handleForgetPassword} className="text-xs hover:text-green-500 text-primary ">
                     Forgot Password?
-                  </Link>
+                  </button>
                 </div>
               )}
             </div>

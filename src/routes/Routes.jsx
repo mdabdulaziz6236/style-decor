@@ -27,6 +27,7 @@ import AssignDecorator from "../pages/Dashboard/dashboardHome/Admin/AssignDecora
 import MyAssignedProjects from "../pages/Dashboard/Decorator/MyAssignedProjects";
 import MyEarnings from "../pages/Dashboard/Decorator/MyEarnings";
 import ManageUsers from "../pages/Dashboard/dashboardHome/Admin/ManageUsers";
+import ForgetPassword from "../pages/Auth/ForgetPassword";
 
 export const router = createBrowserRouter([
   {
@@ -74,6 +75,10 @@ export const router = createBrowserRouter([
       {
         path: "login",
         Component: Login,
+      },
+      {
+        path: "forget-password",
+        Component: ForgetPassword,
       },
     ],
   },

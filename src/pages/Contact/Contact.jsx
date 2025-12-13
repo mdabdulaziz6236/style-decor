@@ -83,21 +83,21 @@ const Contact = () => {
               <div className="flex items-start gap-4">
                 <FaPhoneAlt className="text-primary text-xl mt-1" />
                 <div>
-                  <p className="text-neutral/70 text-sm">Phone</p>
+                  <p className="text-green-500 text-sm">Phone</p>
                   <p className="text-lg font-medium">+1 (555) 123-4567</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <FaEnvelope className="text-primary text-xl mt-1" />
                 <div>
-                  <p className="text-neutral/70 text-sm">Email</p>
+                  <p className="text-green-500 text-sm">Email</p>
                   <p className="text-lg font-medium">contact@styledecor.com</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <FaMapMarkerAlt className="text-primary text-xl mt-1" />
                 <div>
-                  <p className="text-neutral/70 text-sm">Address</p>
+                  <p className="text-green-500 text-sm">Address</p>
                   <p className="text-lg font-medium">
                     123 Decor St, Style City
                   </p>
