@@ -22,7 +22,7 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+const from = location.state?.from?.pathname || "/";
   /* REGISTER HANDLER */
   const handleRegister = async (data) => {
     try {
@@ -63,7 +63,7 @@ const Login = () => {
             timer: 1500,
           });
 
-          navigate(location?.state || "/");
+         navigate(from, { replace: true });
         }
       }
     } catch (error) {
@@ -86,7 +86,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate(location?.state || "/");
+       navigate(from, { replace: true });
       })
       .catch((error) => {
         Swal.fire({
@@ -120,7 +120,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1000,
         });
-        navigate(location?.state || "/");
+        navigate(from, { replace: true });
       })
       .catch((error) => console.log(error.message));
   };

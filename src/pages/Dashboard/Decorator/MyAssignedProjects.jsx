@@ -191,8 +191,15 @@ const MyAssignedProjects = () => {
                     disabled={task.serviceStatus === "Completed"}
                   >
                     <option disabled>Change Status</option>
-                    <option  value="Decorator_Assigned">Assigned</option>
+                    <option value="Decorator_Assigned">Assigned</option>
                     <option value="Decorator_Accepted">Accept</option>
+                    <option value="Decorator_Planing">Planing Phase</option>
+                    <option value="Materials_Prepared">
+                      Materials Prepared
+                    </option>
+                    <option value="On_The_Way_To_Venue">
+                      On the Way to Venue
+                    </option>
                     <option value="Working">Working</option>
                     <option value="Completed">Completed</option>
                   </select>
@@ -273,8 +280,13 @@ const MyAssignedProjects = () => {
                 disabled={task.serviceStatus === "Completed"}
               >
                 <option disabled>Changed Status</option>
-                <option disabled  value="Decorator_Assigned">Assigned</option>
+                <option disabled value="Decorator_Assigned">
+                  Assigned
+                </option>
                 <option value="Decorator_Accepted">Accept</option>
+                <option value="Decorator_Planing">Planing Phase</option>
+                <option value="Materials_Prepared">Materials Prepared</option>
+                <option value="On_The_Way_To_Venue">On the Way to Venue</option>
                 <option value="Working">Working</option>
                 <option value="Completed">Completed</option>
               </select>
@@ -372,13 +384,13 @@ const MyAssignedProjects = () => {
                   </div>
                 )}
                 <div className="bg-success/10 border border-success/30 p-4 rounded-xl">
-                    <h5 className="font-bold text-xs text-success uppercase mb-2">
-                      Money
-                    </h5>
-                    <p className="text-sm italic text-base-content/80 font-medium">
-                      {selectedTask.service_cost}
-                    </p>
-                  </div>
+                  <h5 className="font-bold text-xs text-success uppercase mb-2">
+                    Money
+                  </h5>
+                  <p className="text-sm italic text-base-content/80 font-medium">
+                    {selectedTask.service_cost}
+                  </p>
+                </div>
               </div>
             </div>
           )}

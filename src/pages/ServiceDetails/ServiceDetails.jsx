@@ -78,6 +78,7 @@ const ServiceDetails = () => {
       service_image: service.image,
       provider_email: service.createdByEmail,
       user_email: user?.email,
+      user_image:user?.photoURL,
       user_name: user?.displayName,
       service_cost: service.cost,
       booking_date: data.date,
