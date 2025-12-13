@@ -226,7 +226,7 @@ const BecomeDecorator = () => {
                 </div>
               </div>
 
-              {/* 🔵 RIGHT COLUMN: Professional Info */}
+              {/*  RIGHT COLUMN: Professional Info */}
               <div className="space-y-6">
                 <div className="flex items-center gap-2 border-b border-base-300 pb-2 mb-4">
                   <FaBriefcase className="text-primary text-xl" />
@@ -276,6 +276,7 @@ const BecomeDecorator = () => {
                     {...register("experience", {
                       required: "Experience years is required",
                       min: 0,
+                      valueAsNumber: true
                     })}
                     className={`input input-bordered w-full focus:input-primary bg-base-50 ${
                       errors.experience ? "input-error" : ""

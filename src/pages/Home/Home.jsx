@@ -4,6 +4,7 @@ import Banner from './Banner';
 import PopularServices from './PopularServices';
 import WhyChooseUs from './WhyChooseUs';
 import CoverageMap from './CoverageMap';
+import TopDecorators from './TopDecorators';
 
 const Home = () => {
     const locations = useLoaderData()
@@ -11,6 +12,7 @@ const Home = () => {
         <div className='bg-base-200/50'>
             <Banner></Banner>
             <PopularServices></PopularServices>
+            <TopDecorators></TopDecorators>
             <WhyChooseUs></WhyChooseUs>
             <CoverageMap locations={locations}></CoverageMap>
         </div>
