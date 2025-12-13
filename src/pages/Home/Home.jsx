@@ -5,6 +5,7 @@ import PopularServices from './PopularServices';
 import WhyChooseUs from './WhyChooseUs';
 import CoverageMap from './CoverageMap';
 import TopDecorators from './TopDecorators';
+import CustomerReviews from './CustomerReviews';
 
 const Home = () => {
     const locations = useLoaderData()
@@ -14,6 +15,7 @@ const Home = () => {
             <PopularServices></PopularServices>
             <TopDecorators></TopDecorators>
             <WhyChooseUs></WhyChooseUs>
+            <CustomerReviews></CustomerReviews>
             <CoverageMap locations={locations}></CoverageMap>
         </div>
     );
